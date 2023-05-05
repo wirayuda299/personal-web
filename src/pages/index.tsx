@@ -31,6 +31,9 @@ export default function App({ res, projects }: Props) {
   }
   useEffect(() => {
     window.addEventListener('scroll', () => handleScroll)
+    return () => {
+      window.removeEventListener('scroll', () => handleScroll)
+    }
   }, [])
 
   function handleScroll() {
