@@ -1,10 +1,11 @@
 import Banner from "@/components/Banner/Banner";
 import Contact from "@/components/Contact/Contact";
+import { useStateContext } from "@/components/context/StateContext";
 import Showcase from "@/components/showcase/Showcase";
 import dynamic from "next/dynamic";
-import { useEffect } from "react";
+import {useRef, useEffect } from "react";
 const AboutSection = dynamic(() => import('@/components/About/About'))
-
+import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 type Responses = {
   _createdAt: string,
   _rev: string,
@@ -16,75 +17,90 @@ type Responses = {
   title: string
 }
 
-type Props ={
+type Props = {
   res: Responses[]
   projects: any[]
+  profile: any[]
 }
 
-export default function App({ res, projects }: Props) {
-  let animationFramdeid:any = null
-  const duration= 2000
-  const easing = easeInOutQuad
+export default function Home({ res, projects, profile }: Props) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const {selectedTab, setSelectedTab} = useStateContext()
+  
 
-  function easeInOutQuad(t: number) {
-    return 1 - Math.pow(1 - t, 4)
-  }
   useEffect(() => {
-    window.addEventListener('scroll', () => handleScroll)
-    return () => {
-      window.removeEventListener('scroll', () => handleScroll)
+    const element = document.getElementById(selectedTab.toLowerCase())
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest'
+      })
     }
-  }, [])
 
-  function handleScroll() {
-    if(animationFramdeid) {
-      window.cancelAnimationFrame(animationFramdeid)
-    }
-    animationFramdeid = window.requestAnimationFrame(updateScrollPosition)
-  }
-
-  function updateScrollPosition() {
-    const currentScrollPosition = window.scrollY
-    const targetScrollPosition = currentScrollPosition + currentScrollPosition / 2
-    const distance = targetScrollPosition - currentScrollPosition
-    const timeStart = performance.now()
-
-    function animationFunction() {
-      const elapseTime = performance.now() - timeStart
-      const progress = Math.min(elapseTime / duration, 1)
-      const newScrollPosition = currentScrollPosition + distance * easing(progress)
-      window.scrollTo(0, newScrollPosition)
-
-      if(progress < 1) {
-        animationFramdeid = window.requestAnimationFrame(animationFunction)
-      } else {
-        animationFramdeid = null
-      }
-    }
-    animationFramdeid = window.requestAnimationFrame(animationFunction)
-
-  }
-  
-  
+  },[selectedTab])
   return (
-   <div className="w-full h-full ">
-      <Banner image={res[0].image} inView={false}  subtext={res[0].subtext} title={res[0].title}/>
-      <AboutSection />
-      <Showcase projects={projects} />
-      <Contact/>
-   </div>
+    <div className="w-full h-full " data-scroll>
+      <LocomotiveScrollProvider options={{
+        smooth: true,
+        lerp: 0.05,
+        containerRef: scrollRef,
+        watch: [],
+      }}>
+        <div className="w-full h-full "
+          data-scroll
+          data-scroll-container
+          ref={scrollRef}>
+          <section
+            data-scroll-speed="4"
+            data-scroll-section
+            className="w-full h-screen">
+            <Banner
+              image={res[0].image}
+              inView={false}
+              subtext={res[0].subtext}
+              title={res[0].title} />
+          </section>
+          <section
+
+            data-scroll-speed="4"
+            data-scroll-section
+            className="w-full h-full">
+            <AboutSection
+              description={profile[0].description}
+              name={profile[0].name}
+              profile={profile[0].image} />
+
+          </section>
+          <section
+
+            className="w-full h-full relative">
+            <Showcase projects={projects} />
+
+          </section>
+          <section
+            className="w-full h-full">
+            <Contact />
+
+          </section>
+
+        </div>
+      </LocomotiveScrollProvider>
+    </div>
   );
 }
 
 export async function getStaticProps() {
-  const {client} = await import('@/sanity/utils/client')
+  const { client } = await import('@/sanity/utils/client')
   const projects = await client.fetch(`*[_type == "projects"]`)
   const res = await client.fetch(`*[_type == "banner"]`)
+  const profile = await client.fetch(`*[_type == "profile"]`)
 
   return {
     props: {
       res,
-      projects
+      projects,
+      profile
     },
   };
 }

@@ -2,6 +2,7 @@ import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import banner from '@/sanity/schema/banner'
 import projects from '@/sanity/schema/projects'
+import profile from '@/sanity/schema/profile'
 const config = defineConfig({
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string,
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET as string,
@@ -10,7 +11,7 @@ const config = defineConfig({
     basePath: process.env.NEXT_PUBLIC_SANITY_BASE_PATH as string,
     plugins: [deskTool()],
     schema:{
-        types:[banner, projects]
+        types:[banner, projects, profile]
     }
 })
 export default config

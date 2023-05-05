@@ -3,11 +3,9 @@ import Title from "../Title";
 export default function Contact() {
   return (
 
-    <div className="w-full h-full bg-black bg-fixed bg-center bg-cover" id="contact" style={{
-      backgroundImage: `url(/grid.jpg)`,
-    }}>
+    <div className="w-full h-screen  relative" id="contact"  data-scroll data-scroll-section >
       <div className="mx-auto grid place-items-center">
-        <Title text="contact" classNames="py-20"/>
+        <Title text="contact" classNames="py-10 mt-5"/>
         <form className="w-full max-w-lg">
           <div className="form-group mb-6">
             <input
@@ -26,13 +24,14 @@ export default function Contact() {
           <div className="form-group mb-6">
             <textarea
                className="form-control block w-full px-3 py-5 rounded-md  font-normal text-xl  bg-clip-padding text-white  transition ease-in-out m-0 focus:text-gray-700  bg-gray-500 bg-opacity-20 backdrop-blur-sm focus:outline-none resize-none"
-              rows={8}
+              rows={5}
               placeholder="Message"
             ></textarea>
           </div>
           <div className="form-group form-check text-center mb-6">
             <input
               type="checkbox"
+              defaultChecked
               className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
               checked
             />

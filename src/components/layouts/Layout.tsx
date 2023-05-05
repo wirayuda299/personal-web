@@ -1,25 +1,28 @@
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import Navbar from "../Navbar";
 import { Inter } from 'next/font/google'
-
-const openSans = Inter({
+const inter = Inter({
     display: 'swap',
     subsets: ['latin'],
 })
+
 export default function Layout({ children }: { children: ReactNode }) {
-   
     return (
-        <div className={`w-full h-screen overflow-hidden !select-none ${openSans.className}`} id="layout">
+        <div
+            className={`w-full h-full !select-none ${inter.className}`}
+            id="layout"
+            style={{
+                backgroundImage: 'url(/earth.jpg)',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+               
+            }}
+        >
             <div className="fixed top-0 z-50 w-full">
                 <Navbar />
             </div>
-            <main className="w-full h-full overflow-y-auto overflow-x-hidden">
-                <div className="App " id="smooth-wrapper">
-                    <div id="smooth-content" >
-                        {children}
-                    </div>
-                </div>
-            </main>
+            <main className="w-full h-full overflow-y-auto">{children}</main>
         </div>
-    )
+
+    );
 }
