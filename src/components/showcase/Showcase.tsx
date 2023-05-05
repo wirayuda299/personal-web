@@ -12,7 +12,7 @@ type Props = {
 }
 export default function Showcase({ projects }: Props) {
   return (
-    <div className="w-full h-full p-5 bg-black" id='showcase' style={{
+    <div className="w-full h-screen p-5 bg-black bg-fixed" id='showcase' style={{
       backgroundImage: `url(/bg3.jpg)`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
@@ -25,7 +25,6 @@ export default function Showcase({ projects }: Props) {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
-        loop
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -39,15 +38,24 @@ export default function Showcase({ projects }: Props) {
         className="w-full py-14"
       >
         {projects.map((project: any) => (
-          <SwiperSlide key={project._id} className="bg-center bg-cover !w-[250px] sm:!w-[500px] md:!w-[600px] lg:!w-[800px] " >
-            <Image 
-              sizes='500px'
-              width={500}
-              height={500}
-              priority
-              alt={project.title}
-              className='object-cover mx-auto w-full '
-              src={urlFor(project.image).url() || ''} />
+          <SwiperSlide
+            key={project._id}
+            className="bg-center bg-cover relative h-[500px] !w-[250px] sm:!w-[500px] md:!w-[600px] lg:!w-[800px] " >
+            <a 
+            target='_blank'
+            rel='noopener noreferrer'
+            title="click to see the preview"
+            href={project.link}>
+              <Image
+                sizes='500px'
+                width={500}
+                height={500}
+                priority
+                alt={project.title}
+                className='object-cover mx-auto w-full '
+                src={urlFor(project.image).url() || ''} />
+            </a>
+            <div className="absolute bottom-0 w-full h-1/3 bg-gradient-to-t from-black to-transparent" />
           </SwiperSlide>
         ))}
       </Swiper>

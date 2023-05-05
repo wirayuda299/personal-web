@@ -3,27 +3,29 @@ import Title from "../Title";
 export default function Contact() {
   return (
 
-    <div className="w-full h-full bg-black" id="contact">
+    <div className="w-full h-full bg-black bg-fixed bg-center bg-cover" id="contact" style={{
+      backgroundImage: `url(/grid.jpg)`,
+    }}>
       <div className="mx-auto grid place-items-center">
-        <Title text="Contact" classNames="py-20"/>
-        <form className="w-full max-w-3xl">
+        <Title text="contact" classNames="py-20"/>
+        <form className="w-full max-w-lg">
           <div className="form-group mb-6">
             <input
               type="text"
-              className="form-control block w-full px-3 py-5 rounded-md  font-normal text-xl bg-transparent bg-clip-padding text-white  transition ease-in-out m-0 focus:text-gray-700  bg-gray-500 bg-opacity-20 backdrop-blur-sm focus:outline-none"
+              className="form-control block w-full px-3 py-5 rounded-md  font-normal text-xl  text-white  transition ease-in-out m-0 focus:text-gray-700  bg-gray-500 bg-opacity-20 backdrop-blur-sm focus:outline-none"
               placeholder="Name"
             />
           </div>
           <div className="form-group mb-6">
             <input
               type="email"
-              className="form-control block w-full px-3 py-5 rounded-md  font-normal text-xl bg-transparent bg-clip-padding text-white  transition ease-in-out m-0 focus:text-gray-700  bg-gray-500 bg-opacity-20 backdrop-blur-sm focus:outline-none"
+              className="form-control block w-full px-3 py-5 rounded-md  font-normal text-xl  bg-clip-padding text-white  transition ease-in-out m-0 focus:text-gray-700  bg-gray-500 bg-opacity-20 backdrop-blur-sm focus:outline-none"
               placeholder="Email address"
             />
           </div>
           <div className="form-group mb-6">
             <textarea
-               className="form-control block w-full px-3 py-5 rounded-md  font-normal text-xl bg-transparent bg-clip-padding text-white  transition ease-in-out m-0 focus:text-gray-700  bg-gray-500 bg-opacity-20 backdrop-blur-sm focus:outline-none resize-none"
+               className="form-control block w-full px-3 py-5 rounded-md  font-normal text-xl  bg-clip-padding text-white  transition ease-in-out m-0 focus:text-gray-700  bg-gray-500 bg-opacity-20 backdrop-blur-sm focus:outline-none resize-none"
               rows={8}
               placeholder="Message"
             ></textarea>
@@ -32,7 +34,6 @@ export default function Contact() {
             <input
               type="checkbox"
               className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
-              id="exampleCheck87"
               checked
             />
             <label className="form-check-label inline-block text-gray-800" htmlFor="exampleCheck87"

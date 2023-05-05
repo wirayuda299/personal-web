@@ -9,9 +9,10 @@ export default function Navbar() {
   return (
     <nav className="w-full md:bg-opacity-80 md:backdrop-blur-md transition-all ease duration-500 relative flex md:justify-between md:items-center md:h-20 h-screen p-5 text-white">
       <Header setIsOpen={setIsOpen} />
-      <ul className={`flex flex-col md:flex-row md:static top-0  transition-all ease duration-500 bg-opacity-80 backdrop-blur-md bg-black md:bg-transparent fixed h-full items-center justify-evenly w-full md:space-y-0  space-y-3 text-white ${isOpen ? ' left-0' : '-left-full'}`}>
+      <ul
+        className={`flex flex-col md:flex-row md:static top-0  transition-all ease duration-500 bg-opacity-80 backdrop-blur-md md:backdrop-blur-0 bg-black md:!bg-transparent md:bg-opacity-0 fixed h-full items-center justify-evenly w-full md:space-y-0  space-y-3 text-white ${isOpen ? ' left-0' : '-left-full'}`}>
         {navItems.map(item => (
-          <NavItem name={item.name} path={item.path} key={item.id} />
+          <NavItem name={item.name} key={item.id} />
         ))}
         <button className="absolute md:hidden top-3 right-5" onClick={() => setIsOpen(false)}>
           <AiOutlineClose size={30} />

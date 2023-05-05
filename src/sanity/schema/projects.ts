@@ -12,6 +12,11 @@ export default {
           name: 'description',
           type: 'text',
           title: 'Description',
+      },
+      {
+            name: 'link',
+            type: 'url',
+            title: 'Link',
 
       },
       {
