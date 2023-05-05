@@ -2,7 +2,6 @@ import { AiOutlineArrowDown } from 'react-icons/ai'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/utils/images'
 import Title from '../Title'
-import { handleClickScroll } from '@/helper/scrollIntoview'
 import { motion } from 'framer-motion'
 
 type Props = {
