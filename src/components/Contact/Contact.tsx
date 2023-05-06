@@ -3,10 +3,10 @@ import Title from "../Title";
 export default function Contact() {
   return (
 
-    <div className="w-full h-screen  relative" id="contact"  data-scroll data-scroll-section >
+    <div className="w-full h-full  relative" id="contact"  data-scroll data-scroll-section >
       <div className="mx-auto grid place-items-center">
         <Title text="contact" classNames="py-10 mt-5"/>
-        <form className="w-full max-w-lg">
+        <form className="w-full max-w-md p-5">
           <div className="form-group mb-6">
             <input
               type="text"

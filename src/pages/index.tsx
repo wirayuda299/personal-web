@@ -27,6 +27,8 @@ type Props = {
 
 export default function Home({ res, projects, profile }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
+  console.log(projects);
+  
 
   return (
     <div className="w-full h-full " data-scroll>

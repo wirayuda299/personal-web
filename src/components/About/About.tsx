@@ -10,23 +10,22 @@ type Props = {
 export default function About({ name, profile, description }: Props) {
 
   return (
-    <div className="w-full h-full text-white p-5  " id='about' >
+    <div className="w-full h-full text-white p-5 " id='about' >
       <Title text="About Me" classNames="py-14 capitalize text-center" />
-      <div className="container mx-auto grid grid-cols-1 gap-x-10 md:grid-cols-2 justify-between items-center ">
+      <div className="container mx-auto relative h-full grid grid-cols-1 gap-x-10 md:grid-cols-2 justify-between items-center ">
         <motion.div
-          className="w-full h-full relative"
+          className="w-full h-full "
           initial={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.5 }}
           whileInView={{ opacity: 1, x: 0 }}
         >
           <Image
-            className="object-cover about-image w-full h-auto rounded-lg aspect-square"
+            className="object-cover about-image w-full h-full rounded-lg aspect-square"
             src={urlFor(profile).url().toString()}
             width={800}
             height={800}
             priority
             alt={name} />
-           <div className="absolute bottom-0 w-full h-1/3 bg-gradient-to-t from-black to-transparent" />
         </motion.div>
         <div className="flex flex-col items-start">
           <motion.h1
