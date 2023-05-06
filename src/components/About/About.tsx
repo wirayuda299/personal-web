@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Title from "../Title";
-import { AiFillLinkedin, AiOutlineGithub, AiOutlineInstagram } from "react-icons/ai";
 import { motion } from 'framer-motion'
 import { urlFor } from "@/sanity/utils/images";
 type Props = {
@@ -50,15 +49,9 @@ export default function About({ name, profile, description }: Props) {
             transition={{ duration: 0.5 }}
             whileInView={{ opacity: 1, x: 0 }}
            className="w-full flex space-x-4 mt-5">
-            <a href="https://github.com/wirayuda299">
-              <AiOutlineGithub className="text-4xl" />
-            </a>
-            <a href="https://www.linkedin.com/in/wira-yuda-0900b4243/">
-              <AiFillLinkedin className="text-4xl" />
-            </a>
-            <button>
-              <AiOutlineInstagram className="text-4xl" />
-            </button>
+           <button className="bg-black bg-opacity-50 rounded-lg px-8 py-3">
+            Download CV
+           </button>
           </motion.div>
         </div>
       </div>

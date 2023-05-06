@@ -1,11 +1,11 @@
-import Banner from "@/components/Banner/Banner";
-import Contact from "@/components/Contact/Contact";
-import { useStateContext } from "@/components/context/StateContext";
-import Showcase from "@/components/showcase/Showcase";
 import dynamic from "next/dynamic";
-import {useRef, useEffect } from "react";
-const AboutSection = dynamic(() => import('@/components/About/About'))
+import { useRef } from "react";
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+const AboutSection = dynamic(() => import('@/components/About/About'))
+const Showcase = dynamic(() => import('@/components/showcase/Showcase'))
+const Banner = dynamic(() => import('@/components/Banner/Banner'))
+const Contact = dynamic(() => import('@/components/Contact/Contact'))
+
 type Responses = {
   _createdAt: string,
   _rev: string,
@@ -15,6 +15,8 @@ type Responses = {
   image: string
   subtext: string,
   title: string
+  background: string
+  techstack: string[]
 }
 
 type Props = {
@@ -25,20 +27,7 @@ type Props = {
 
 export default function Home({ res, projects, profile }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const {selectedTab, setSelectedTab} = useStateContext()
-  
 
-  useEffect(() => {
-    const element = document.getElementById(selectedTab.toLowerCase())
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest'
-      })
-    }
-
-  },[selectedTab])
   return (
     <div className="w-full h-full " data-scroll>
       <LocomotiveScrollProvider options={{
@@ -56,13 +45,11 @@ export default function Home({ res, projects, profile }: Props) {
             data-scroll-section
             className="w-full h-screen">
             <Banner
+              techstack={res[0].techstack}
               image={res[0].image}
-              inView={false}
-              subtext={res[0].subtext}
-              title={res[0].title} />
+              />
           </section>
           <section
-
             data-scroll-speed="4"
             data-scroll-section
             className="w-full h-full">
@@ -70,20 +57,15 @@ export default function Home({ res, projects, profile }: Props) {
               description={profile[0].description}
               name={profile[0].name}
               profile={profile[0].image} />
-
           </section>
           <section
-
             className="w-full h-full relative">
             <Showcase projects={projects} />
-
           </section>
           <section
             className="w-full h-full">
             <Contact />
-
           </section>
-
         </div>
       </LocomotiveScrollProvider>
     </div>

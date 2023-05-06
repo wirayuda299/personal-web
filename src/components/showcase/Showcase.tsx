@@ -36,7 +36,7 @@ export default function Showcase({ projects }: Props) {
           {projects.map((project: any) => (
             <SwiperSlide
               key={project._id}
-              className="bg-center bg-cover relative h-[500px] !w-[250px] sm:!w-[500px] md:!w-[600px] lg:!w-[800px] " >
+              className="bg-center bg-cover relative h-[500px] !w-[250px] sm:!w-[500px] md:!w-[600px] lg:!w-[800px]" >
               <a
                 target='_blank'
                 rel='noopener noreferrer'

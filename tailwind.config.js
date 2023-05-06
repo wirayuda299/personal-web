@@ -10,6 +10,7 @@ module.exports = {
       animation: {
         text: 'text 5s ease infinite',
         fadein: 'fadein 1s ease-in-out forwards',
+        rotation: 'rotation 10s linear infinite',
 
       },
       keyframes: {
@@ -23,9 +24,14 @@ module.exports = {
             'background-position': 'right center',
           },
         },
+      
         fadein: {
           '0%': { opacity: 0 },
           '100%': { opacity: 1 },
+        },
+        rotation: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
         }
       },
     },

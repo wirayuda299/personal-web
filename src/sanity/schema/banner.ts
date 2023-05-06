@@ -18,5 +18,16 @@ export default {
             type: 'image',
             title: 'Image'
         },
+        {
+            name: 'background',
+            type: 'image',
+            title: 'Background'
+        },
+        {
+            name: 'techstack',
+            type: 'array',
+            title: 'TechStack',
+            of: [{type: 'image'}]
+        }
     ]
 }
