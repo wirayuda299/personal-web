@@ -1,9 +1,10 @@
+import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { useRef } from "react";
+import {  useRef } from "react";
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
-const AboutSection = dynamic(() => import('@/components/About/About'))
+const AboutSection = dynamic(() => import('@/components/About'))
 const Showcase = dynamic(() => import('@/components/showcase/Showcase'))
-const Banner = dynamic(() => import('@/components/Banner/Banner'))
+const Banner = dynamic(() => import('@/components/Banner'))
 const Contact = dynamic(() => import('@/components/Contact/Contact'))
 
 type Responses = {
@@ -27,16 +28,20 @@ type Props = {
 
 export default function Home({ res, projects, profile }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  console.log(projects);
-  
-
   return (
-    <div className="w-full h-full " data-scroll>
+    <motion.div className="w-full h-full " style={{
+    backgroundImage: `url(/earth.jpg)`,
+    backgroundSize: 'cover',
+    backgroundPositionX: 'center' ,
+    backgroundRepeat: 'no-repeat',
+
+
+    }} >
       <LocomotiveScrollProvider options={{
         smooth: true,
         lerp: 0.05,
         containerRef: scrollRef,
-        watch: [],
+        watch: [scrollRef],
       }}>
         <div className="w-full h-full "
           data-scroll
@@ -70,7 +75,7 @@ export default function Home({ res, projects, profile }: Props) {
           </section>
         </div>
       </LocomotiveScrollProvider>
-    </div>
+    </motion.div>
   );
 }
 

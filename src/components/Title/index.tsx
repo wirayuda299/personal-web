@@ -11,7 +11,7 @@ export default function Title({ text, classNames }: Props) {
       initial={{ opacity: 0, y: 100 }}
       transition={{ duration: 0.5 }}
       whileInView={{ opacity: 1, y: 0 }}
-      className={`text-6xl md:text-7xl lg:text-9xl animate-text uppercase  font-extrabold  bg-gradient-to-r text-transparent from-teal-500 via-purple-500  to-[#030a6b] bg-clip-text ${classNames}`}>
+      className={`text-6xl md:text-7xl lg:text-9xl animate-text uppercase  font-extrabold  bg-gradient-to-r text-transparent from-[#feeba9] via-[#aaa484]   to-[#212e3e] bg-clip-text ${classNames}`}>
       {text}
     </motion.h1>
   )

@@ -9,16 +9,16 @@ type Props = {
 }
 export default function Showcase({ projects }: Props) {
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full relative" id="showcase">
       <div className="w-full h-full  text-white p-5 " id='showcase' data-scroll-section data-scroll >
         <Title text="Showcase" classNames="text-center py-20 capitalize" />
-        <div className="container mx-auto grid place-items-center">
+        <div className="w-full flex justify-between flex-col items-center">
           {projects.map((project, i) => (
             <motion.div
               initial={{ opacity: 0, x: i % 2 === 0 ? 200 : -200 }}
               transition={{ duration: 0.5 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className={`w-full max-w-6xl h-full flex-wrap lg:flex-nowrap justify-center p-8 flex gap-10 mb-6 items-center ${i % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`}
+              className={`w-full max-w-6xl h-full flex-wrap lg:flex-nowrap justify-center p-8 flex gap-10 lg:gap-24 mb-6 items-center ${i % 2 === 0 ? 'flex-row-reverse' : 'flex-row'}`}
 
               key={project._id}>
               <Image
