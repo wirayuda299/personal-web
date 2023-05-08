@@ -1,5 +1,6 @@
-import BannerTitle from './BannerTitle'
-import Profiles from './Profile'
+import dynamic from 'next/dynamic'
+const Profiles = dynamic(() => import('./Profile'), { ssr: true })
+const BannerTitle = dynamic(() => import('./BannerTitle'), { ssr: true })
 
 export type Props = {
   image: string
@@ -13,7 +14,6 @@ export default function Banner({ image, techstack }: Props) {
         id='home'
         data-scroll
         data-scroll-section
-
       >
         <div className='absolute text-white w-full h-full flex justify-center'>
           <div className='mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 lg:gap-11 h-full justify-center items-center '>

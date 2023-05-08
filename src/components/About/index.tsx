@@ -1,8 +1,9 @@
 import Image from "next/image";
-import Title from "../Title";
 import { motion } from 'framer-motion'
 import { urlFor } from "@/sanity/utils/images";
-import Info from "./Info";
+import dynamic from "next/dynamic";
+const Title = dynamic(() => import('../Title'))
+const Info = dynamic(() => import('./Info'))
 
 export type Props = {
   name: string
